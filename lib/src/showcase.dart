@@ -56,6 +56,8 @@ class Showcase extends StatefulWidget {
   final bool? disposeOnTap;
   final bool disableAnimation;
   final EdgeInsets overlayPadding;
+  final bool showFloatingDismissButton;
+  final double floatingDismissButtonPadding;
 
   const Showcase(
       {required this.key,
@@ -77,7 +79,9 @@ class Showcase extends StatefulWidget {
       this.contentPadding =
           const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
       this.onToolTipClick,
-      this.overlayPadding = EdgeInsets.zero})
+      this.overlayPadding = EdgeInsets.zero,
+      this.showFloatingDismissButton = true,
+      this.floatingDismissButtonPadding = 30})
       : height = null,
         width = null,
         container = null,
@@ -94,28 +98,30 @@ class Showcase extends StatefulWidget {
                 : (onTargetClick == null ? false : true),
             "onTargetClick is required if you're using disposeOnTap");
 
-  const Showcase.withWidget({
-    this.key,
-    required this.child,
-    required this.container,
-    required this.height,
-    required this.width,
-    this.title,
-    this.description,
-    this.shapeBorder,
-    this.overlayColor = Colors.black,
-    this.overlayOpacity = 0.75,
-    this.titleTextStyle,
-    this.descTextStyle,
-    this.showcaseBackgroundColor = Colors.white,
-    this.textColor = Colors.black,
-    this.onTargetClick,
-    this.disposeOnTap,
-    this.animationDuration = const Duration(milliseconds: 2000),
-    this.disableAnimation = false,
-    this.contentPadding = const EdgeInsets.symmetric(vertical: 8),
-    this.overlayPadding = EdgeInsets.zero,
-  })  : showArrow = false,
+  const Showcase.withWidget(
+      {this.key,
+      required this.child,
+      required this.container,
+      required this.height,
+      required this.width,
+      this.title,
+      this.description,
+      this.shapeBorder,
+      this.overlayColor = Colors.black,
+      this.overlayOpacity = 0.75,
+      this.titleTextStyle,
+      this.descTextStyle,
+      this.showcaseBackgroundColor = Colors.white,
+      this.textColor = Colors.black,
+      this.onTargetClick,
+      this.disposeOnTap,
+      this.animationDuration = const Duration(milliseconds: 2000),
+      this.disableAnimation = false,
+      this.contentPadding = const EdgeInsets.symmetric(vertical: 8),
+      this.overlayPadding = EdgeInsets.zero,
+      this.showFloatingDismissButton = true,
+      this.floatingDismissButtonPadding = 30})
+      : showArrow = false,
         onToolTipClick = null,
         assert(overlayOpacity >= 0.0 && overlayOpacity <= 1.0,
             "overlay opacity should be >= 0.0 and <= 1.0.");
@@ -292,9 +298,21 @@ class _ShowcaseState extends State<Showcase> with TickerProviderStateMixin {
               onTooltipTap: _getOnTooltipTap,
               contentPadding: widget.contentPadding,
             ),
+            if (widget.showFloatingDismissButton) _getFloatingExitButton()
           ],
         ),
       );
+
+  Widget _getFloatingExitButton() => Positioned(
+      top: widget.floatingDismissButtonPadding,
+      right: widget.floatingDismissButtonPadding,
+      child: GestureDetector(
+          onTap: () => ShowCaseWidget.of(context)!.dismiss(),
+          child: Container(
+              // make sure that we're not in the safe area
+              padding: EdgeInsets.all(20),
+              child:
+                  Icon(Icons.cancel, color: widget.showcaseBackgroundColor))));
 }
 
 class _TargetWidget extends StatelessWidget {
