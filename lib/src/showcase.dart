@@ -261,7 +261,7 @@ class _ShowcaseState extends State<Showcase> with TickerProviderStateMixin {
         child: Stack(
           children: [
             GestureDetector(
-              onTap: () => (widget.onTargetClick ?? _nextIfAny).call(),
+              onTap: _getOnTargetTap,
               child: Container(
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height,
