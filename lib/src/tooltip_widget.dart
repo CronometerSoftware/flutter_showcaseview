@@ -282,6 +282,7 @@ class _ToolTipWidgetState extends State<ToolTipWidget> {
                                                         color: widget.textColor,
                                                       ),
                                                     ),
+                                            textAlign: TextAlign.center,
                                           )
                                         : SizedBox(),
                                     Text(
@@ -295,6 +296,7 @@ class _ToolTipWidgetState extends State<ToolTipWidget> {
                                                   color: widget.textColor,
                                                 ),
                                               ),
+                                      textAlign: TextAlign.center,
                                     ),
                                   ],
                                 )
