@@ -261,7 +261,11 @@ class _ShowcaseState extends State<Showcase> with TickerProviderStateMixin {
         child: Stack(
           children: [
             GestureDetector(
-              onTap: _getOnTargetTap,
+              // If we have a floating dismiss button any tap outside the target,
+              // and not on the dismiss will trigger the target action
+              onTap: widget.showFloatingDismissButton
+                  ? _getOnTargetTap
+                  : _nextIfAny,
               child: Container(
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height,
