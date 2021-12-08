@@ -57,7 +57,7 @@ class Showcase extends StatefulWidget {
   final bool disableAnimation;
   final EdgeInsets overlayPadding;
   final bool showFloatingDismissButton;
-  final double floatingDismissButtonPadding;
+  final EdgeInsets floatingDismissButtonPadding;
   final VoidCallback? onDismissCallback;
 
   const Showcase(
@@ -82,7 +82,7 @@ class Showcase extends StatefulWidget {
       this.onToolTipClick,
       this.overlayPadding = EdgeInsets.zero,
       this.showFloatingDismissButton = true,
-      this.floatingDismissButtonPadding = 30,
+      this.floatingDismissButtonPadding = const EdgeInsets.all(30),
       this.onDismissCallback})
       : height = null,
         width = null,
@@ -122,7 +122,7 @@ class Showcase extends StatefulWidget {
       this.contentPadding = const EdgeInsets.symmetric(vertical: 8),
       this.overlayPadding = EdgeInsets.zero,
       this.showFloatingDismissButton = true,
-      this.floatingDismissButtonPadding = 30,
+      this.floatingDismissButtonPadding = const EdgeInsets.all(30),
       this.onDismissCallback})
       : showArrow = false,
         onToolTipClick = null,
@@ -311,8 +311,8 @@ class _ShowcaseState extends State<Showcase> with TickerProviderStateMixin {
       );
 
   Widget _getFloatingExitButton() => Positioned(
-      top: widget.floatingDismissButtonPadding,
-      right: widget.floatingDismissButtonPadding,
+      top: 0,
+      right: 0,
       child: GestureDetector(
           onTap: () {
             ShowCaseWidget.of(context)!.dismiss();
@@ -320,7 +320,7 @@ class _ShowcaseState extends State<Showcase> with TickerProviderStateMixin {
           },
           child: Container(
               // make sure that we're not in the safe area
-              padding: EdgeInsets.all(20),
+              padding: widget.floatingDismissButtonPadding,
               child:
                   Icon(Icons.cancel, color: widget.showcaseBackgroundColor))));
 }
