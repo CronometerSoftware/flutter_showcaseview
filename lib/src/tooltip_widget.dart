@@ -459,7 +459,6 @@ class _ToolTipWidgetState extends State<ToolTipWidget>
                                                   color: widget.textColor,
                                                 ),
                                               ),
-                                      textAlign: TextAlign.center,
                                     ),
                                   ),
                                 ],

@@ -248,54 +248,54 @@ class Showcase extends StatefulWidget {
   final EdgeInsets floatingDismissButtonPadding;
   final VoidCallback? onDismissCallback;
 
-  const Showcase({
-    required this.key,
-    required this.description,
-    required this.child,
-    this.title,
-    this.titleAlignment = TextAlign.start,
-    this.descriptionAlignment = TextAlign.start,
-    this.targetShapeBorder = const RoundedRectangleBorder(
-      borderRadius: BorderRadius.all(Radius.circular(8)),
-    ),
-    this.overlayColor = Colors.black45,
-    this.overlayOpacity = 0.75,
-    this.titleTextStyle,
-    this.descTextStyle,
-    this.tooltipBackgroundColor = Colors.white,
-    this.textColor = Colors.black,
-    this.scrollLoadingWidget = const CircularProgressIndicator(
-      valueColor: AlwaysStoppedAnimation(Colors.white),
-    ),
-    this.showArrow = true,
-    this.onTargetClick,
-    this.disposeOnTap,
-    this.movingAnimationDuration = const Duration(milliseconds: 2000),
-    this.disableMovingAnimation,
-    this.disableScaleAnimation,
-    this.tooltipPadding =
-        const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
-    this.onToolTipClick,
-    this.targetPadding = EdgeInsets.zero,
-    this.blurValue,
-    this.targetBorderRadius,
-    this.onTargetLongPress,
-    this.onTargetDoubleTap,
-    this.tooltipBorderRadius,
-    this.disableDefaultTargetGestures = false,
-    this.scaleAnimationDuration = const Duration(milliseconds: 300),
-    this.scaleAnimationCurve = Curves.easeIn,
-    this.scaleAnimationAlignment,
-    this.tooltipPosition,
-    this.titlePadding,
-    this.descriptionPadding,
-    this.titleTextDirection,
-    this.descriptionTextDirection,
-    this.onBarrierClick,
-    this.showFloatingDismissButton = true,
-    this.floatingDismissButtonPadding = const EdgeInsets.all(30),
-    this.onDismissCallback
-  })  : height = null,
+  const Showcase(
+      {required this.key,
+      required this.description,
+      required this.child,
+      this.title,
+      this.titleAlignment = TextAlign.start,
+      this.descriptionAlignment = TextAlign.start,
+      this.targetShapeBorder = const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(8)),
+      ),
+      this.overlayColor = Colors.black45,
+      this.overlayOpacity = 0.75,
+      this.titleTextStyle,
+      this.descTextStyle,
+      this.tooltipBackgroundColor = Colors.white,
+      this.textColor = Colors.black,
+      this.scrollLoadingWidget = const CircularProgressIndicator(
+        valueColor: AlwaysStoppedAnimation(Colors.white),
+      ),
+      this.showArrow = true,
+      this.onTargetClick,
+      this.disposeOnTap,
+      this.movingAnimationDuration = const Duration(milliseconds: 2000),
+      this.disableMovingAnimation,
+      this.disableScaleAnimation,
+      this.tooltipPadding =
+          const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+      this.onToolTipClick,
+      this.targetPadding = EdgeInsets.zero,
+      this.blurValue,
+      this.targetBorderRadius,
+      this.onTargetLongPress,
+      this.onTargetDoubleTap,
+      this.tooltipBorderRadius,
+      this.disableDefaultTargetGestures = false,
+      this.scaleAnimationDuration = const Duration(milliseconds: 300),
+      this.scaleAnimationCurve = Curves.easeIn,
+      this.scaleAnimationAlignment,
+      this.tooltipPosition,
+      this.titlePadding,
+      this.descriptionPadding,
+      this.titleTextDirection,
+      this.descriptionTextDirection,
+      this.onBarrierClick,
+      this.showFloatingDismissButton = true,
+      this.floatingDismissButtonPadding = const EdgeInsets.all(30),
+      this.onDismissCallback})
+      : height = null,
         width = null,
         container = null,
         assert(overlayOpacity >= 0.0 && overlayOpacity <= 1.0,
@@ -305,37 +305,37 @@ class Showcase extends StatefulWidget {
         assert(disposeOnTap == null || onTargetClick != null,
             "onTargetClick is required if you're using disposeOnTap");
 
-  const Showcase.withWidget({
-    required this.key,
-    required this.height,
-    required this.width,
-    required this.container,
-    required this.child,
-    this.targetShapeBorder = const RoundedRectangleBorder(
-      borderRadius: BorderRadius.all(
-        Radius.circular(8),
+  const Showcase.withWidget(
+      {required this.key,
+      required this.height,
+      required this.width,
+      required this.container,
+      required this.child,
+      this.targetShapeBorder = const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(
+          Radius.circular(8),
+        ),
       ),
-    ),
-    this.overlayColor = Colors.black45,
-    this.targetBorderRadius,
-    this.overlayOpacity = 0.75,
-    this.scrollLoadingWidget = const CircularProgressIndicator(
-        valueColor: AlwaysStoppedAnimation(Colors.white)),
-    this.onTargetClick,
-    this.disposeOnTap,
-    this.movingAnimationDuration = const Duration(milliseconds: 2000),
-    this.disableMovingAnimation,
-    this.targetPadding = EdgeInsets.zero,
-    this.blurValue,
-    this.onTargetLongPress,
-    this.onTargetDoubleTap,
-    this.disableDefaultTargetGestures = false,
-    this.tooltipPosition,
-    this.onBarrierClick,
-    this.showFloatingDismissButton = true,
-    this.floatingDismissButtonPadding = const EdgeInsets.all(30),
-    this.onDismissCallback
-  })  : showArrow = false,
+      this.overlayColor = Colors.black45,
+      this.targetBorderRadius,
+      this.overlayOpacity = 0.75,
+      this.scrollLoadingWidget = const CircularProgressIndicator(
+          valueColor: AlwaysStoppedAnimation(Colors.white)),
+      this.onTargetClick,
+      this.disposeOnTap,
+      this.movingAnimationDuration = const Duration(milliseconds: 2000),
+      this.disableMovingAnimation,
+      this.targetPadding = EdgeInsets.zero,
+      this.blurValue,
+      this.onTargetLongPress,
+      this.onTargetDoubleTap,
+      this.disableDefaultTargetGestures = false,
+      this.tooltipPosition,
+      this.onBarrierClick,
+      this.showFloatingDismissButton = true,
+      this.floatingDismissButtonPadding = const EdgeInsets.all(30),
+      this.onDismissCallback})
+      : showArrow = false,
         onToolTipClick = null,
         scaleAnimationDuration = const Duration(milliseconds: 300),
         scaleAnimationCurve = Curves.decelerate,
@@ -503,8 +503,8 @@ class _ShowcaseState extends State<Showcase> {
           onTap: () {
             if (!showCaseWidgetState.disableBarrierInteraction) {
               widget.showFloatingDismissButton
-                ? _getOnTargetTap()
-                : _nextIfAny();
+                  ? _getOnTargetTap()
+                  : _nextIfAny();
             }
             widget.onBarrierClick?.call();
           },
@@ -587,6 +587,7 @@ class _ShowcaseState extends State<Showcase> {
             descriptionTextDirection: widget.descriptionTextDirection,
           ),
         ],
+        if (widget.showFloatingDismissButton) _getFloatingExitButton()
       ],
     );
   }
@@ -596,14 +597,14 @@ class _ShowcaseState extends State<Showcase> {
       right: 0,
       child: GestureDetector(
           onTap: () {
-            ShowCaseWidget.of(context)!.dismiss();
+            ShowCaseWidget.of(context).dismiss();
             widget.onDismissCallback?.call();
           },
           child: Container(
               // make sure that we're not in the safe area
               padding: widget.floatingDismissButtonPadding,
               child:
-                  Icon(Icons.cancel, color: widget.showcaseBackgroundColor))));
+                  Icon(Icons.cancel, color: widget.tooltipBackgroundColor))));
 }
 
 class _TargetWidget extends StatelessWidget {
